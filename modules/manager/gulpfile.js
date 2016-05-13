@@ -14,6 +14,22 @@ plugins.glob.sync('gulp/tasks/*').forEach(function (path) {
   require(path)(gulp, plugins, config, informer);
 });
 
+/**
+ * Build task
+ */
+gulp.task('build', function () {
+  plugins.del(config.paths.dest).then(function () {
+    gulp.start([
+      'icons',
+      'assets',
+      'libraries',
+      'scripts',
+      'styles',
+      'modernizr',
+      'templates'
+    ]);
+  });
+});
 
 
 /**
@@ -23,4 +39,11 @@ gulp.task('default', function () {
   plugins.browserSync.init({
     server: './'
   });
+  
+  gulp.watch(config.paths.src + '/icons/*.svg', ['icons']);
+  gulp.watch(config.paths.src + '/styles/**/*', ['styles']);
+  gulp.watch([config.paths.src + '/scripts/**/*', '!' + config.paths.src + '/scripts/plugins.js'], ['scripts']);
+  gulp.watch(config.paths.src + '/scripts/plugins.js', ['libraries']);
+  gulp.watch(config.paths.src + '/{images,videos,fonts}/**/*.*', ['assets']);
+  gulp.watch([config.paths.src + '/templates/**/*.{twig,html}', config.paths.src + '/data.json'], ['templates']);
 });
