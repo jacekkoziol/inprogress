@@ -7,6 +7,12 @@
     "type": "git",
     "url": ""
   },
+  "config": {
+    "paths": {
+      "src": "src",
+      "dest": "dest"
+    }
+  },
   "author": "Jacek K.",
   "license": "ISC",
   "devDependencies": {
