@@ -21,6 +21,7 @@ gulp.task('build', function () {
   plugins.del(config.paths.dest).then(function () {
     gulp.start([
       'icons',
+      'svgstore',
       'assets',
       'libraries',
       'scripts',
@@ -40,6 +41,7 @@ gulp.task('default', function () {
   });
   
   gulp.watch(config.paths.src + '/icons/*.svg', ['icons']);
+  gulp.watch(config.paths.src + '/svg/*.svg', ['svgstore']);
   gulp.watch(config.paths.src + '/styles/**/*', ['styles']);
   gulp.watch([config.paths.src + '/scripts/**/*', '!' + config.paths.src + '/scripts/plugins.js'], ['scripts']);
   gulp.watch(config.paths.src + '/scripts/plugins.js', ['libraries']);

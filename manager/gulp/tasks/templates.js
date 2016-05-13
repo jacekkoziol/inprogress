@@ -12,6 +12,8 @@ var templatesTask = function (gulp, plugins, config, informer) {
       }))
       .pipe(plugins.twig({ errorLogToConsole: true, cache: false }))
       .pipe(plugins.prettify({ indent_size: 2, preserve_newlines: true, extra_liners: [] }))
+      .pipe(plugins.htmlhint('.htmlhintrc'))
+      .pipe(plugins.htmlhint.reporter())
       .pipe(gulp.dest(dest))
       .on('end', plugins.browserSync.reload);
 
