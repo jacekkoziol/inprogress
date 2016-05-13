@@ -3,7 +3,7 @@
 var librariesTask = function (gulp, plugins, config, informer) {
   gulp.task('libraries', function () {
     var dest = config.paths.dest + '/scripts';
-
+console.log('run libraries');
     var stream = gulp.src(config.paths.src + '/scripts/plugins.js')
       .pipe(plugins.plumber(informer.onError))
       .pipe(plugins.include())

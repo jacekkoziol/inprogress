@@ -10,7 +10,7 @@
   "config": {
     "paths": {
       "src": "src",
-      "dest": "dest"
+      "dest": "dist"
     }
   },
   "author": "J.K.",
